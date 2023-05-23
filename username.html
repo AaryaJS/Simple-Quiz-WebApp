@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ff8a00;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e52e71;
+        }
+    </style>
+    <title>Quiz Game</title>
+</head>
+<body>
+    <form id="nameform">
+        <p>Enter Your Name:</p>
+        <input type="text" id="nameInput" placeholder="Name" required/>
+        <br/>
+        <button onclick="window.location.href = 'quiz.html';">Log In</button>
+    </form>
+    <script type="text/javascript">
+        const nameForm = document.getElementById("nameform");
+
+        nameForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById("nameInput");
+            const userName = nameInput.value;
+
+            localStorage.setItem("name", userName);
+            console.log(userName);
+        });
+    </script>
+</body>
+</html>

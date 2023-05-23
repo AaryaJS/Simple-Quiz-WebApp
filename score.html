@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        
+        .score-container {
+            background-color: #ffffff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .score {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .result {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .correct {
+            color: #66bb6a;
+        }
+        
+        .incorrect {
+            color: #ef5350;
+        }
+        button[id="back"] {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ff8a00;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[id="back"]:hover {
+            background-color: #e52e71;
+        }
+    </style>
+    <title>Quiz Result</title>
+</head>
+<body>
+    <h1>Quiz Result</h1>
+    <div class="score-container">
+        <div class="score">
+            Your Score: <span id="scoreValue"></span>/5
+        </div>
+        <div class="result">
+            <span class="correct">Correct:</span> <span id="correctCount"></span>
+        </div>
+        <div class="result">
+            <span class="incorrect">Incorrect:</span> <span id="incorrectCount"></span>
+        </div>
+        <div class="result">
+            <span class="correct">Answer 1:</span> Sunlight
+        </div>
+        <div class="result">
+            <span class="correct">Answer 2:</span> Giyu Tomioka
+        </div>
+        <div class="result">
+            <span class="correct">Answer 3:</span> Sankonji Urokodaki
+        </div>
+        <div class="result">
+            <span class="correct">Answer 4:</span> Smell
+        </div>
+        <div class="result">
+            <span class="correct">Answer 5:</span> Nichirin Sword
+        </div>
+        <div class="result">
+            <button id="back" onclick="window.location.href = 'quiz.html';">Back to Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const selectedAnswer1 = localStorage.getItem("selectedAnswer1");
+        const selectedAnswer2 = localStorage.getItem("selectedAnswer2");
+        const selectedAnswer3 = localStorage.getItem("selectedAnswer3");
+        const selectedAnswer4 = localStorage.getItem("selectedAnswer4");
+        const selectedAnswer5 = localStorage.getItem("selectedAnswer5");
+        let score = 0;
+
+        function calculateScore() {
+            if (selectedAnswer1 === "a") {
+                score++;
+            }
+            if (selectedAnswer2 === "b") {
+                score++;
+            }
+            if (selectedAnswer3 === "b") {
+                score++;
+            }
+            if (selectedAnswer4 === "c") {
+                score++;
+            }
+            if (selectedAnswer5 === "a") {
+                score++;
+            }
+            console.log(score);
+            return score;
+        }
+
+        const scoreValue = document.getElementById("scoreValue");
+        const correctCount = document.getElementById("correctCount");
+        const incorrectCount = document.getElementById("incorrectCount");
+
+        const totalScore = calculateScore();
+        scoreValue.textContent = totalScore;
+        correctCount.textContent = totalScore;
+        incorrectCount.textContent = 5 - totalScore;
+    </script>
+</body>
+</html>
